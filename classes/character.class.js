@@ -21,7 +21,24 @@ IMAGES_JUMPING = [
     'img_pollo_locco/img/2_character_pepe/3_jump/J-37.png',
     'img_pollo_locco/img/2_character_pepe/3_jump/J-38.png',
     'img_pollo_locco/img/2_character_pepe/3_jump/J-39.png',
-]
+];
+
+IMAGES_HURT = [
+    'img_pollo_locco/img/2_character_pepe/4_hurt/H-41.png',
+    'img_pollo_locco/img/2_character_pepe/4_hurt/H-42.png',
+    'img_pollo_locco/img/2_character_pepe/4_hurt/H-43.png'
+];
+
+IMAGES_DEAD = [
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-51.png',
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-52.png',
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-53.png',
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-54.png',
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-55.png',
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-56.png',
+    'img_pollo_locco/img/2_character_pepe/5_dead/D-57.png'
+];
+
 world;
 walking_sound = new Audio('audio/walking.mp3')
 
@@ -29,6 +46,8 @@ constructor(){
     super().loadImage('./img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png');
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
+    this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGES_DEAD);
     this.applyGravity();
     this.animate();
 }
@@ -37,18 +56,18 @@ animate(){
 setInterval(()=> {
     this.walking_sound.pause();
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
-         this.x += this.speed;
-         this.otherDirection = false;
-         this.walking_sound.play();
+       this.moveRight();
+       this.otherDirection = false;
+       this.walking_sound.play();
     }
     if (this.world.keyboard.LEFT && this.x > 0){
-        this.x -= this.speed;
-        this.otherDirection = true;
+       this.moveLeft();
+       this.otherDirection = true;
         this.walking_sound.play();
    }
 
-   if(this.world.keyboard.UP) {
-    this. speedY = 20;
+   if(this.world.keyboard.SPACE && !this.isAboveGround()) {
+    this.jump();
 
     }
   
@@ -57,20 +76,23 @@ setInterval(()=> {
 }, 1000/60)
 
 setInterval(()=> {
-    if (this.isAboveGround()){
-        this.playAnimation(this.IMAGES_JUMPING)
+
+    if (this.isDead()){
+        this.playAnimation(this.IMAGES_DEAD)
+    }else{ if (this.isHurt()){
+        this.playAnimation(this.IMAGES_HURT)
     }else{
-          if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+         if (this.isAboveGround()){
+        this.playAnimation(this.IMAGES_JUMPING)
+    }else{ if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         //walking Animation
    this.playAnimation(this.IMAGES_WALKING)
     }
+    }      
     }
-    
-  
+        
+    }
 }, 50);
+};
 
-}
-    jump(){
-
-    }
 }
