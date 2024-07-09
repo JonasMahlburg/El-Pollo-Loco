@@ -7,7 +7,7 @@ IMAGES_WALKING =[
     'img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png',
     'img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
 ];
-// walking_sound = new Audio('audio/chicken.mp3');
+walking_sound = new Audio('audio/chicken.mp3');
 
 constructor(){
     super().loadImage('img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
@@ -25,6 +25,7 @@ animate(){
    
     setInterval(()=> {
  this.playAnimation(this.IMAGES_WALKING)
+//  this.walking_sound.play();
     },1000/ 60);
     
     }

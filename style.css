@@ -1,7 +1,17 @@
+@font-face {
+    font-family: Cthulhumbus;
+    src: url(fonts/JMH\ Cthulhumbus\ UG.ttf);
+  }
+
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('img_pollo_locco/img/10_own_images/desert-6814275_1280.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Cthulhumbus;
 }
 
 canvas{
