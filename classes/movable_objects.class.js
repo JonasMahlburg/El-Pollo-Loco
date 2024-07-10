@@ -6,6 +6,8 @@ class movableObject extends drawableObject{
     acceleration = 1;
     energy = 100;
     lastHit = 0;
+    Bottle = 0;
+    Coin = 0;
 
     //---------Moving---------
 
@@ -74,5 +76,16 @@ this.y + this.height > mo.y &&
     return this.energy ==0;
 
  }
+
+ collectBottle(){
+    this.Bottle += 10;
+    
+ }
+
+ collectCoin(){
+    this.Coin += 10;
+    
+ }
+
 }
 

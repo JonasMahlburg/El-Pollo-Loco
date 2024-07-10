@@ -39,8 +39,13 @@ IMAGES_DEAD = [
     'img_pollo_locco/img/2_character_pepe/5_dead/D-57.png'
 ];
 
+COINS = [];
+
+AMMONITION = [];
+
 world;
-walking_sound = new Audio('audio/walking.mp3')
+walking_sound = new Audio('audio/walking.mp3');
+
 
 constructor(){
     super().loadImage('./img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png');
@@ -77,7 +82,7 @@ setInterval(()=> {
 
 setInterval(()=> {
 
-    if (this.isDead()){
+ if (this.isDead()){
         this.playAnimation(this.IMAGES_DEAD)
     }else{ if (this.isHurt()){
         this.playAnimation(this.IMAGES_HURT)
@@ -92,6 +97,7 @@ setInterval(()=> {
     }
         
     }
+    
 }, 50);
 };
 

@@ -27,10 +27,11 @@ class drawableObject{
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
 
-        drawFrame(ctx){
-            if (this instanceof Character || this instanceof Chicken){
+        //draws Frames around certain objects for hitdetection
+        drawFrame(ctx){         
+            if (this instanceof bottleInSand || this instanceof Character || this instanceof coins ){
                 ctx.beginPath();
-                ctx.lineWidth ='2';
+                ctx.lineWidth ='2';                                          
                 ctx.strokeStyle = 'yellow';
                 ctx.rect(this.x, this.y, this.width, this.height);
                 ctx.stroke();

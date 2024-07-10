@@ -13,7 +13,6 @@ function init(){
 window.addEventListener ("keydown", (e) => {
  if(e.keyCode == 39){
    keyboard.RIGHT = true;
-   console.log('true');
  };
  if(e.keyCode == 37){
    keyboard.LEFT = true;
@@ -35,7 +34,6 @@ window.addEventListener ("keydown", (e) => {
 window.addEventListener ("keyup", (e) => {
    if(e.keyCode == 39){
      keyboard.RIGHT = false;
-     console.log('false');
    };
    if(e.keyCode == 37){
      keyboard.LEFT = false;
@@ -50,6 +48,6 @@ window.addEventListener ("keyup", (e) => {
      keyboard.SPACE = false;
    };
    if(e.keyCode == 68){
-    keyboard.SPACE = false;
+    keyboard.D = false;
   };
   })

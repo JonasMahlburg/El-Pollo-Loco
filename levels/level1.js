@@ -3,6 +3,9 @@ const level1 = new Level(
     new Chicken(),
     new Chicken(),
     new Chicken(),
+    new Chicken(),
+    new Chicken(),
+    new Chicken(),
     new Endboss(),
 ],
 [
@@ -10,6 +13,18 @@ const level1 = new Level(
     new Clouds(),
     new Clouds(),
     new Clouds(),
+],
+[
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
+    new coins(),
 ],
 [
     new Background('img_pollo_locco/img/5_background/layers/air.png', -719),
@@ -35,4 +50,19 @@ const level1 = new Level(
     new Background('img_pollo_locco/img/5_background/layers/3_third_layer/2.png', 719*3),
     new Background('img_pollo_locco/img/5_background/layers/2_second_layer/2.png', 719*3),
     new Background('img_pollo_locco/img/5_background/layers/1_first_layer/2.png', 719*3)
-]);
+],
+[
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+    new bottleInSand(),
+
+    
+]
+);
