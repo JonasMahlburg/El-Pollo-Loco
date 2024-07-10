@@ -82,6 +82,10 @@ this.y + this.height > mo.y &&
     
  }
 
+ throwBottle(){
+    this.Bottle -= 10;
+ }
+
  collectCoin(){
     this.Coin += 10;
     

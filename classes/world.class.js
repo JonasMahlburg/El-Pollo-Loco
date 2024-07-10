@@ -43,6 +43,7 @@ class World {
       );
       this.throwableObjects.push(Bottle);
       this.character.AMMONITION.splice(0, 1)
+    this.character.throwBottle();
       this.salsaBar.setPercentage(this.character.Bottle);
       }
      
@@ -67,7 +68,7 @@ class World {
       this.level.bottleInSand.forEach((salsa, index) => {
         if (this.character.isColliding(salsa)) {
           this.character.collectBottle();
-          level1.bottleInSand.splice(index, 1);
+          level1.bottleInSand.splice(index, 1);  // delete bottle from screen
         this.salsaBar.setPercentage(this.character.Bottle);
         this.character.AMMONITION.push('salsa')
         }
