@@ -1,12 +1,14 @@
 class Chicken extends movableObject {
 height = 90;
 y = 330;
+energy = 1;
 IMAGES_WALKING =[
     'img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
     'img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
     'img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png',
     'img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
 ];
+
 walking_sound = new Audio('audio/chicken.mp3');
 
 constructor(){

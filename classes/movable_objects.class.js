@@ -8,6 +8,12 @@ class movableObject extends drawableObject{
     lastHit = 0;
     Bottle = 0;
     Coin = 0;
+    Offset = {
+        bottom: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+    };
 
     //---------Moving---------
 
@@ -50,10 +56,10 @@ class movableObject extends drawableObject{
 
 
     isColliding(mo) {
-return this.x + this.width > mo.x && 
-this.y + this.height > mo.y &&
- this.x < mo.x && 
- this.y < mo.y + mo.height
+return this.x + this.width - this.Offset.right > mo.x + mo.Offset.left && 
+this.y + this.height - this.Offset.bottom > mo.y + mo.Offset.top &&
+ this.x + this.Offset.left < mo.x + mo.width - mo.Offset.right && 
+ this.y + this.Offset.top < mo.y + mo.height - mo.Offset.bottom
 }
 
  hit(){
