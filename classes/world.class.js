@@ -17,6 +17,7 @@ class World {
   start = new finish()
   intervals = [];
 
+
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -24,6 +25,7 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+    
   }
 
   setWorld() {
@@ -42,7 +44,7 @@ class World {
       if (this.character.AMMONITION.length >0){
          let Bottle = new throwableObject(
         this.character.x + 100,
-        this.character.y + 100
+        this.character.y + 100,
       );
       this.throwableObjects.push(Bottle);
       this.character.AMMONITION.splice(0, 1)
@@ -167,20 +169,4 @@ class World {
     this.ctx.restore();
   }
 
- 
-
-  // endGame() {
-  //   // Beende das Spiel und zeige das Endbild
-  //   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-  //   // Beende alle Intervalle
-  //   this.intervals.forEach(intervalId => clearInterval(intervalId));
-
-  //   const img = new Image();
-  //   img.src = 'img_pollo_locco/img/9_intro_outro_screens/win/won_1.png';
-  //   img.onload = () => {
-  //     this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
-  //   };
-  //   console.log('Game is Over');
-  // }
 }

@@ -17,7 +17,7 @@ body{
 
 canvas{
     background-color: black;
-    border: 2px solid black;
+    border: 4px solid black;
     display: block;
     z-index: 1;
 }
@@ -34,11 +34,6 @@ padding-right: 5px;
     align-items: center;
 }
 
-
-.d-none{
-display: none;
-}
-
 #startScreen{
     position: relative;
     width: 720px;
@@ -47,11 +42,106 @@ display: none;
     z-index: 100;
     margin-bottom: -480px;
     background-color: black;
+    justify-content: center;
+    align-items: center;
 }
 img{
     width: 723px;
     height: 483px;
 }
+
+.storyBoardContainer{
+    background-color: #C98345;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+    padding: 10px;
+    flex-direction: column;
+}
+
+#storyBoard{
+    background-color: #C98345;
+    position: relative;
+    width: 720px;
+    height: 480px;
+    display: none;
+    z-index: 101;
+    margin-bottom: -480px;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeBtn{
+    background-color: gold;
+border: 1px solid black;
+border-radius: 50%;
+height: 60px;
+width: 60px;
+cursor: pointer;
+font-family: Cthulhumbus;
+margin-top: 60px;
+}
+
+.closeBtn:hover{
+    border: 2px solid rgb(0, 0, 0);
+    transform: scale(1.2);
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+}
+.start{
+background-color: green;
+border: 1px solid black;
+border-radius: 50%;
+height: 60px;
+width: 60px;
+cursor: pointer;
+font-family: Cthulhumbus;
+}
+
+.music{
+border: 1px solid black;
+border-radius: 50%;
+height: 60px;
+width: 60px;
+cursor: pointer;
+font-family: Cthulhumbus;
+object-fit: contain;
+background-color: blue;
+}
+
+.start:hover{
+    border: 2px solid gold;
+    transform: scale(1.2);
+}
+
+.isAbout{
+background-color: gold;
+border: 1px solid black;
+border-radius: 50%;
+height: 60px;
+width: 60px;
+cursor: pointer;
+font-family: Cthulhumbus;
+}
+
+.isAbout:hover{
+    border: 2px solid rgb(0, 0, 0);
+    transform: scale(1.2);
+}
+
 /* mobile versions */
 
 @media only screen and (max-width: 720px) {

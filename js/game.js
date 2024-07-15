@@ -1,11 +1,47 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let firstPlayTrough = false;
+let mariachi = new Audio('audio/Titlemelody.mp3');
+
+function showStory(){
+  document.getElementById('storyBoard').style.display="flex"
+  document.getElementById('storyBoard').innerHTML= `<div class="storyBoardContainer">
+  <span>Pepe <br> please help the Mariachi musicians to get smooth fresh chickenbreasts for there Tacos</span>
+  <button class="closeBtn" onclick="closeStory()">Story told</button>
+  </div>`
+}
+
+function closeStory(){
+  document.getElementById('storyBoard').style.display="none";
+}
+
+function playMariachi(){
+  mariachi.play();
+}
+
+function toggleMusic(){
+ mariachi.volume= 0.2;
+ if(!mariachi.play()) {
+  mariachi.play();
+ }else{
+  mariachi.pause();
+ };
+}
 
 function startGame(){
-  document.getElementById('startScreen').style.display="none";
+  if(!firstPlayTrough){
+      document.getElementById('startScreen').style.display="none";
+  clearAllIntervals()
   initLevel();
   init();
+  
+  }
+firstPlayTrough = true;
+}
+
+ function clearAllIntervals() {
+  for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 function endGame(id){
@@ -18,13 +54,15 @@ function endGame(id){
   }else if (id == 3){
     document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/game_over/oh no you lost!.png";
   }
+  firstPlayTrough = false;
+  mariachi.pause();
  }
 
 function init(){
    
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
-  
+   
 }
 
 window.addEventListener ("keydown", (e) => {

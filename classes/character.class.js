@@ -74,6 +74,7 @@ Offset = {
 };
 
 world;
+isReallyDead= false;
 walking_sound = new Audio('audio/walking.mp3');
 isHurt_sound = new Audio('audio/hit.mp3');
 dead_sound = new Audio('audio/DIED_sound.mp3');
@@ -117,7 +118,8 @@ setInterval(()=> {
 
     
         
-     if (this.isDead()){
+     if (this.isDead() && !this.isReallyDead){
+        this.isReallyDead= true;
         this.playAnimation(this.IMAGES_DEAD)
         // this.dead_sound.play();
         setTimeout(endGame(3), 1500);
