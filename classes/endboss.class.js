@@ -3,7 +3,8 @@ class Endboss extends movableObject {
     height = 500;
     width = 300;
     y = -55;
-    energy = 100
+    x = 2200;
+    energy = 100;
  
 
     IMAGES_ALERT = [
@@ -46,9 +47,16 @@ class Endboss extends movableObject {
         'img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G25.png',
         'img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G26.png'
     ];
- world;
+
 hadFirstContact = false;
 endboss = new Audio('audio/Endboss.mp3');
+
+Offset = {
+    bottom: 20, 
+    top: 90,
+    left: 10,
+    right: 0,
+};
 
    
 
@@ -59,20 +67,15 @@ endboss = new Audio('audio/Endboss.mp3');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_ATTACK);
         this.loadImages(this.IMAGES_DEAD);
-     
-        this.x= 2200;
         this.animate();
     }
 
      distance = this.x;
 
     animate(){
-// console.log(this.distance);
-
-// this.endboss.play();
         let i = 0;
 
-        setInterval(()=> {
+    let interval2 = setInterval(()=> {
     
             if (i < 50) {
                 this.playAnimation(this.IMAGES_ALERT);
@@ -85,7 +88,28 @@ endboss = new Audio('audio/Endboss.mp3');
                 this.hadFirstContact= true;
                 }
                 }, 150);
-            // this.playAnimation(this.IMAGES_ALERT)
-            //    },1000);
+
+let interval = setInterval(() => {
+
+    console.log(interval);
+    if (this.energy <= 0) {
+        if (i < this.IMAGES_DEAD.length) { // Korrigiert: i < statt i <=
+            this.playAnimation(this.IMAGES_DEAD);
+            i++;
+        } else{
+            this.loadImage('img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G26.png');
+            clearInterval(interval)
+           
+
+               if(world.character.Coin >= 50){
+                setTimeout(endGame(2), 1500);
+               }
+            else{
+                setTimeout(endGame(1), 1500);
             }
+        }
+    }
+}, 300);
 }
+
+        }        

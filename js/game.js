@@ -2,6 +2,23 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+function startGame(){
+  document.getElementById('startScreen').style.display="none";
+  initLevel();
+  init();
+}
+
+function endGame(id){
+  clearInterval();
+  document.getElementById('startScreen').style.display="flex";
+  if (id == 1){
+    document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_1.png";
+  }else if (id == 2){
+    document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_2.png";
+  }else if (id == 3){
+    document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/game_over/oh no you lost!.png";
+  }
+ }
 
 function init(){
    
