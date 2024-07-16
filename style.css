@@ -147,7 +147,7 @@ font-family: Cthulhumbus;
     width: 720px;
     height: 480px;
     display: flex;
-    z-index: 103;
+    z-index: 100;
     margin-bottom: -480px;
     justify-content: space-between;
     align-items: center;
@@ -161,7 +161,7 @@ border-radius: 50%;
 height: 50px;
 width: 50px;
 font-family: Cthulhumbus;
-display: none;
+display: flex;
 justify-content: center;
 align-items: center;
 }
@@ -213,9 +213,9 @@ align-items: center;
         width: 100%;
     }
 
-    mobileActionBtn{
+    /* mobileActionBtn{
         display: flex;
-    }
+    } */
 }
 
 @media only screen and (max-height: 480px) {

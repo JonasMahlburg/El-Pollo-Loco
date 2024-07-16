@@ -107,36 +107,53 @@ window.addEventListener ("keyup", (e) => {
   };
   })
 
-  window.addEventListener("touchstart", (e) => {
-    if(e ==document.getElementById('mobile_left')){
-      keyboard.LEFT = true;
-      console.log('links funzt');
-    }
-    if(document.getElementById('mobile_right')){
-      keyboard.RIGHT = true;
-      console.log('rechts funzt');
-    }
-    if(document.getElementById('mobile_jump')){
-      keyboard.SPACE = true;
-      console.log('jump funzt');
-    }
-    if(document.getElementById('mobile_throw')){
-      keyboard.D = true;
-      console.log('throw funzt');
-    }
-  })
+function bindPresstoBtn(){
+  document.getElementById("mobile_left").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.LEFT = true;
+  });
+  document.getElementById("mobile_left").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.LEFT = false;
+  });
 
-  window.addEventListener("touchend", (e) => {
-    if(document.getElementById('mobile_left')){
-      keyboard.LEFT = false;
-    }
-    if(document.getElementById('mobile_right')){
-      keyboard.RIGHT = false;
-    }
-    if(document.getElementById('mobile_jump')){
-      keyboard.SPACE = false;
-    }
-    if(document.getElementById('mobile_throw')){
-      keyboard.D = false;
-    }
-  })
+  document.getElementById("mobile_right").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = true;
+  });
+  document.getElementById("mobile_right").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = false;
+  });
+
+  document.getElementById("mobile_jump").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.SPACE = true;
+  });
+  document.getElementById("mobile_jump").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.SPACE = false;
+  });
+
+  document.getElementById("mobile_throw").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.D = true;
+  });
+  document.getElementById("mobile_throw").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.D = false;
+  });
+
+  document.getElementById("mobile_start").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    startGame()
+  });
+
+  document.getElementById("mobile_mute").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+   toggleMusic()
+  });
+}
+
+
+
