@@ -22,7 +22,7 @@ function playMariachi(){
 
 function toggleMusic(){
  mariachi.volume= 0.2;
- if(!mariachi.play()) {
+ if(mariachi.paused) {
   mariachi.play();
  }else{
   mariachi.pause();
@@ -105,4 +105,38 @@ window.addEventListener ("keyup", (e) => {
    if(e.keyCode == 68){
     keyboard.D = false;
   };
+  })
+
+  window.addEventListener("touchstart", (e) => {
+    if(e ==document.getElementById('mobile_left')){
+      keyboard.LEFT = true;
+      console.log('links funzt');
+    }
+    if(document.getElementById('mobile_right')){
+      keyboard.RIGHT = true;
+      console.log('rechts funzt');
+    }
+    if(document.getElementById('mobile_jump')){
+      keyboard.SPACE = true;
+      console.log('jump funzt');
+    }
+    if(document.getElementById('mobile_throw')){
+      keyboard.D = true;
+      console.log('throw funzt');
+    }
+  })
+
+  window.addEventListener("touchend", (e) => {
+    if(document.getElementById('mobile_left')){
+      keyboard.LEFT = false;
+    }
+    if(document.getElementById('mobile_right')){
+      keyboard.RIGHT = false;
+    }
+    if(document.getElementById('mobile_jump')){
+      keyboard.SPACE = false;
+    }
+    if(document.getElementById('mobile_throw')){
+      keyboard.D = false;
+    }
   })

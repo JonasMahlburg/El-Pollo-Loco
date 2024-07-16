@@ -142,11 +142,79 @@ font-family: Cthulhumbus;
     transform: scale(1.2);
 }
 
+.mobileButtons{
+    position: relative;
+    width: 720px;
+    height: 480px;
+    display: flex;
+    z-index: 103;
+    margin-bottom: -480px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mobileActionBtn{
+    background-color: gold;
+border: 1px solid black;
+border-radius: 50%;
+height: 50px;
+width: 50px;
+font-family: Cthulhumbus;
+display: none;
+justify-content: center;
+align-items: center;
+}
+
+.buttonsBottom{
+    display: flex;
+    justify-content: space-between;
+    width: 720px;
+}
+
+.buttonsTop{
+    display: flex;
+    justify-content: space-between;
+    width: 720px;
+}
+
+.buttonsDirection{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin: 10px;
+}
+
+.buttonsAction{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+
+.mobile_image{
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+#mobile_throw{
+    margin-left: 10px;
+}
+
+#mobile_right{
+    margin-left: 10px;
+}
+
 /* mobile versions */
 
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
+    }
+
+    mobileActionBtn{
+        display: flex;
     }
 }
 

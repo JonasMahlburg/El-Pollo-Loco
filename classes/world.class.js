@@ -96,12 +96,21 @@ class World {
 
       this.throwableObjects.forEach((bottle) => {
         if(bottle.isColliding(this.level.endboss[0])){
-          console.log('Bottle hurt Boss');
+        // throwableObject.playAnimation(throwableObject.BOTTLE_BURST)
           this.level.endboss[0].hit();
           this.bossBar.setPercentage(  this.level.endboss[0].energy);
           
         }
       });
+
+      // this.throwableObjects.forEach((bottle, index) => {
+      //   if(bottle.isColliding(this.level.enemy)){
+      //   // throwableObject.playAnimation(throwableObject.BOTTLE_BURST)
+      //     this.level.enemy.hit();
+      //     this.level.enemies.splice(index, 1)
+          
+      //   }
+      // });
   }
 
   draw() {
