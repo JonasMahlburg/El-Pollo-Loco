@@ -20,6 +20,8 @@ canvas{
     border: 4px solid black;
     display: block;
     z-index: 1;
+    position: relative;
+    top: 22px
 }
 
 .control{
@@ -35,19 +37,17 @@ padding-right: 5px;
 }
 
 #startScreen{
-    position: relative;
-    width: 720px;
-    height: 480px;
+    position: absolute;
     display: flex;
     z-index: 100;
-    margin-bottom: -480px;
+    top: 109px;
     background-color: black;
     justify-content: center;
     align-items: center;
 }
 img{
-    width: 723px;
-    height: 483px;
+    width: 720px;
+    height: 54vh;
 }
 
 .storyBoardContainer{
@@ -111,6 +111,11 @@ cursor: pointer;
 font-family: Cthulhumbus;
 }
 
+.start:hover{
+    border: 2px solid gold;
+    transform: scale(1.2);
+}
+
 .music{
 border: 1px solid black;
 border-radius: 50%;
@@ -122,10 +127,7 @@ object-fit: contain;
 background-color: blue;
 }
 
-.start:hover{
-    border: 2px solid gold;
-    transform: scale(1.2);
-}
+
 
 .isAbout{
 background-color: gold;
@@ -143,12 +145,12 @@ font-family: Cthulhumbus;
 }
 
 .mobileButtons{
-    position: relative;
+    position: absolute;
     width: 720px;
-    height: 480px;
-    display: flex;
+    height: 50vh;
+    display: none;
     z-index: 100;
-    margin-bottom: -480px;
+    top: 124px;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
@@ -209,17 +211,81 @@ align-items: center;
 /* mobile versions */
 
 @media only screen and (max-width: 720px) {
+    body{
+        background-image:none;
+        height: 100%;
+    }
+
+    h1{
+        display: none;
+    }
+
+    .control{
+        display: none;
+    }
+
+    .menu{
+        display: none;
+    }
+    
     canvas {
+        width: 100%;
+        top: 0;
+    }
+
+    img{
+        width: 100%;
+        top: 0;
+    }
+
+    #startScreen{
+        width: 100%;
+        top: 0;
+    }
+
+    .mobileButtons {
+        display: flex;
+        width: 100%;
+        top: 0;
+    }
+
+    .buttonsTop{
         width: 100%;
     }
 
-    /* mobileActionBtn{
-        display: flex;
-    } */
+    .buttonsBottom{
+        width: 100%;
+    }
 }
 
 @media only screen and (max-height: 480px) {
+  
+    
     canvas {
+        height: 100vh;
+        position: absolute;
+    
+    }
+
+    img{
+        height: 100vh;
+    }
+
+    #startScreen{
+        height: 100vh;
+        top: 0;
+    }
+
+    .mobileButtons{
+        display: flex;
+        height: 100vh;
+    }
+
+    .buttonsTop{
+        height: 100vh;
+    }
+
+    .buttonsBottom{
         height: 100vh;
     }
 }

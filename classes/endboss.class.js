@@ -49,7 +49,6 @@ class Endboss extends movableObject {
     ];
 
 hadFirstContact = false;
-endboss = new Audio('audio/Endboss.mp3');
 
 Offset = {
     bottom: 20, 
@@ -58,6 +57,7 @@ Offset = {
     right: 0,
 };
 
+bagook = new Audio('audio/angryChicken.mp3');
    
 
     constructor(){
@@ -69,36 +69,35 @@ Offset = {
         this.loadImages(this.IMAGES_DEAD);
         this.animate();
     }
-
-     distance = this.x;
+     
 
     animate(){
         let i = 0;
 
-    let interval2 = setInterval(()=> {
+setInterval(()=> {
     
             if (i < 50) {
                 this.playAnimation(this.IMAGES_ALERT);
+                
                 } else {
                     this.playAnimation(this.IMAGES_WALKING);
                 }
                 i++;
-                if(world.character.x > 1900 && !this.hadFirstContact) {
+                if(world.character.x >= 1900 && !this.hadFirstContact) {
                 i = 0;
                 this.hadFirstContact= true;
                 }
                 }, 150);
 
-let interval = setInterval(() => {
+ setInterval(() => {
 
-    console.log(interval);
     if (this.energy <= 0) {
-        if (i < this.IMAGES_DEAD.length) { // Korrigiert: i < statt i <=
+        if (i < this.IMAGES_DEAD.length) { 
             this.playAnimation(this.IMAGES_DEAD);
             i++;
         } else{
             this.loadImage('img_pollo_locco/img/4_enemie_boss_chicken/5_dead/G26.png');
-            clearInterval(interval)
+            clearInterval();
            
 
                if(world.character.Coin >= 50){
@@ -110,6 +109,16 @@ let interval = setInterval(() => {
         }
     }
 }, 300);
-}
 
-        }        
+setInterval(() => {
+if(this.energy <= 80){
+    this.playAnimation(this.IMAGES_ATTACK)
+    this.speed = 15;
+}
+},150);
+
+
+};
+
+
+}

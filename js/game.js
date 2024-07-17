@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 let firstPlayTrough = false;
 let mariachi = new Audio('audio/Titlemelody.mp3');
 
+
 function showStory(){
   document.getElementById('storyBoard').style.display="flex"
   document.getElementById('storyBoard').innerHTML= `<div class="storyBoardContainer">
@@ -17,6 +18,7 @@ function closeStory(){
 }
 
 function playMariachi(){
+  mariachi.volume= 0.2;
   mariachi.play();
 }
 
@@ -45,7 +47,7 @@ firstPlayTrough = true;
 }
 
 function endGame(id){
-  clearInterval();
+  clearAllIntervals();
   document.getElementById('startScreen').style.display="flex";
   if (id == 1){
     document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_1.png";

@@ -80,6 +80,7 @@ isHurt_sound = new Audio('audio/hit.mp3');
 dead_sound = new Audio('audio/DIED_sound.mp3');
 
 
+
 constructor(){
     super().loadImage('./img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png');
     this.loadImages(this.IMAGES_STANDING);
@@ -89,7 +90,10 @@ constructor(){
     this.loadImages(this.IMAGES_DEAD);
     this.applyGravity();
     this.animate();
+    
 }
+
+
 
 animate(){
 setInterval(()=> {
@@ -121,11 +125,11 @@ setInterval(()=> {
      if (this.isDead() && !this.isReallyDead){
         this.isReallyDead= true;
         this.playAnimation(this.IMAGES_DEAD)
-        // this.dead_sound.play();
+        this.dead_sound.play();
         setTimeout(endGame(3), 1500);
     }else{ if (this.isHurt()){
         this.playAnimation(this.IMAGES_HURT)
-        // this.isHurt_sound.play();
+        this.isHurt_sound.play();
     }else{
          if (this.isAboveGround()){
         this.playAnimation(this.IMAGES_JUMPING)

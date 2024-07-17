@@ -63,7 +63,8 @@ class World {
         this.statusBar.setPercentage(this.character.energy);
         }else{
           enemy.loadImage('img_pollo_locco/img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
-          this.level.enemies.splice(index, 1)
+          
+          this.level.enemies.splice(index, 1);
           
         }
 
@@ -72,12 +73,11 @@ class World {
     //Hit detection for Ultra Chicken
     this.level.endboss.forEach((boss) => {
         if(this.character.isColliding(boss)){
-          console.log(boss, "hurt Pepe");
           this.character.hit();
           this.statusBar.setPercentage(this.character.energy);
         }
     });
-
+// Münzen sammeln
     this.level.coins.forEach((coin, index) => {
         if (this.character.isColliding(coin)) {
           this.character.collectCoin();
@@ -85,6 +85,7 @@ class World {
           this.coinBar.setPercentage(this.character.Coin);
         }
       });
+    
       this.level.bottleInSand.forEach((salsa, index) => {
         if (this.character.isColliding(salsa)) {
           this.character.collectBottle();
@@ -103,14 +104,14 @@ class World {
         }
       });
 
-      // this.throwableObjects.forEach((bottle, index) => {
-      //   if(bottle.isColliding(this.level.enemy)){
-      //   // throwableObject.playAnimation(throwableObject.BOTTLE_BURST)
-      //     this.level.enemy.hit();
-      //     this.level.enemies.splice(index, 1)
+      this.throwableObjects.forEach((bottle, index) => {
+        if(bottle.isColliding(this.level.enemies[index])){
+        throwableObject.playAnimation(throwableObject.BOTTLE_BURST)
+          this.level.enemies.hit();
+          this.level.enemies.splice(index, 1)
           
-      //   }
-      // });
+        }
+      });
   }
 
   draw() {
@@ -159,7 +160,7 @@ class World {
     }
     mo.draw(this.ctx);
   
-    mo.drawOffsetFrame(this.ctx);
+  
 
     if (mo.otherDirection) {
       this.flipImageBack(mo);
@@ -177,5 +178,7 @@ class World {
     mo.x = mo.x * -1;
     this.ctx.restore();
   }
+
+  
 
 }

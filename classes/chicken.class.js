@@ -16,6 +16,7 @@ Offset = {
 };
 
 walking_sound = new Audio('audio/chicken.mp3');
+dead_sound = new Audio('audio/splash.mp3');
 
 constructor(){
     super().loadImage('img_pollo_locco/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
@@ -33,8 +34,14 @@ animate(){
    
     setInterval(()=> {
  this.playAnimation(this.IMAGES_WALKING)
-//  this.walking_sound.play();
+ this.walking_sound.volume = 0.2
+ this.walking_sound.play();
     },1000/ 60);
+    
+    if(this.energy==0){
+        this.dead_sound.play();
+        
+     }
     
     }
     
