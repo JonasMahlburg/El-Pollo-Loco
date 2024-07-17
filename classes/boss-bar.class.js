@@ -10,7 +10,9 @@ class bossBar extends drawableObject{
     ];
 
   
-
+/**
+ * access functions of superior class and set characteristics of Bossbar
+ */
     constructor(){
         super();
         this.loadImages(this.IMAGES);
@@ -21,13 +23,24 @@ class bossBar extends drawableObject{
         this.setPercentage(100);
         }
 
+    
+/**
+ * loading the right Image for the energyBar of the endboss
+ * 
+ * @param {percentage} percentage -parameter sets the right Image for Bar
+ */    
     setPercentage(percentage){
         this.percentage = percentage;
         let path = this.IMAGES[this.resolveImageIndex()];
         this.img = this.imageCache[path];
-    }
+        }
 
-    resolveImageIndex(){
+   /**
+    * gives the Image Number for Bossbar
+    * 
+    * @returns - gives back the number wich Image should be loaded from Array
+    */
+     resolveImageIndex(){
         if (this.percentage == 100){
             return 5;
         }else if(this.percentage >= 80){

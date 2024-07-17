@@ -27,11 +27,15 @@ class World {
     this.run();
     
   }
-
+/**
+ * hands over the world class over to character class
+ */
   setWorld() {
     this.character.world = this;
   }
-
+/**
+ * this function is for setting an interval that runs the checkCollision and checkThrowableObjects functions in a certain time interval
+ */
   run() {
     setInterval(() => {
       this.checkCollisions();
@@ -39,6 +43,9 @@ class World {
     }, 200);
   }
 
+  /**
+   * if the throwbutton (D) is pressed, this function checks if you have salsa bottles to throw. i fit so one bottle will be spliced out from the Array 
+   */
   checkThrowableObjects() {
     if (this.keyboard.D) {
       if (this.character.AMMONITION.length >0){
@@ -54,18 +61,18 @@ class World {
      
     }
   }
-
+/**
+ * checks if the character is colliding with sertain objects or enemies
+ */
   checkCollisions() {
     this.level.enemies.forEach((enemy, index) => {
       if (this.character.isColliding(enemy)) {
         if(!this.character.isAboveGround()){
         this.character.hit();
         this.statusBar.setPercentage(this.character.energy);
-        }else{
+        }else if(this.character.isAboveGround()){
           enemy.loadImage('img_pollo_locco/img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
-          
           this.level.enemies.splice(index, 1);
-          
         }
 
       }
@@ -97,26 +104,17 @@ class World {
 
       this.throwableObjects.forEach((bottle) => {
         if(bottle.isColliding(this.level.endboss[0])){
-        // throwableObject.playAnimation(throwableObject.BOTTLE_BURST)
           this.level.endboss[0].hit();
           this.bossBar.setPercentage(  this.level.endboss[0].energy);
           
         }
       });
-
-      this.throwableObjects.forEach((bottle, index) => {
-        if(bottle.isColliding(this.level.enemies[index])){
-        throwableObject.playAnimation(throwableObject.BOTTLE_BURST)
-          this.level.enemies.hit();
-          this.level.enemies.splice(index, 1)
-          
-        }
-      });
   }
 
+  /**
+   * draws every Object onto the canvas
+   */
   draw() {
-    // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    // this.addToMap(this.startAndFinish);
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObjects);
@@ -148,12 +146,22 @@ class World {
     });
   }
 
+  /**
+   * adding the objects to canvas there are going from right to left
+   * 
+   * @param {object} objects - objects like, enemies, coins and bottles
+   */
   addObjectsToMap(objects) {
     objects.forEach((o) => {
       this.addToMap(o);
     });
   }
 
+  /**
+   * adding object that is going from left to right
+   * 
+   * @param {moveableObject} mo - character
+   */
   addToMap(mo) {
     if (mo.otherDirection) {
       this.flipImage(mo);
@@ -167,6 +175,11 @@ class World {
     }
   }
 
+  /**
+   * mirroring the image of character
+   * 
+   * @param {moveableObject} mo - the Character
+   */
   flipImage(mo) {
     this.ctx.save();
     this.ctx.translate(mo.width, 0);
@@ -174,6 +187,11 @@ class World {
     mo.x = mo.x * -1;
   }
 
+  /**
+   * reseting the Image from turning
+   * 
+   * @param {moveableObject} mo  - the character
+   */
   flipImageBack(mo) {
     mo.x = mo.x * -1;
     this.ctx.restore();

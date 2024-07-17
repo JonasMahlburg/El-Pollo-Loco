@@ -4,7 +4,9 @@ let keyboard = new Keyboard();
 let firstPlayTrough = false;
 let mariachi = new Audio('audio/Titlemelody.mp3');
 
-
+/**
+ * this function shows the backstory of the game in a popUp over the canvas
+ */
 function showStory(){
   document.getElementById('storyBoard').style.display="flex"
   document.getElementById('storyBoard').innerHTML= `<div class="storyBoardContainer">
@@ -12,16 +14,16 @@ function showStory(){
   <button class="closeBtn" onclick="closeStory()">Story told</button>
   </div>`
 }
-
+/**
+ * this function is used to close the Popup with the Backstory
+ */
 function closeStory(){
   document.getElementById('storyBoard').style.display="none";
 }
 
-function playMariachi(){
-  mariachi.volume= 0.2;
-  mariachi.play();
-}
-
+/**
+ * this function turns the Music on and off
+ */
 function toggleMusic(){
  mariachi.volume= 0.2;
  if(mariachi.paused) {
@@ -30,7 +32,9 @@ function toggleMusic(){
   mariachi.pause();
  };
 }
-
+/**
+ * this function starts all functions to display the game and remove the titlescreen
+ */
 function startGame(){
   if(!firstPlayTrough){
       document.getElementById('startScreen').style.display="none";
@@ -42,10 +46,18 @@ function startGame(){
 firstPlayTrough = true;
 }
 
+/**
+ * this function stop all current intervals
+ */
  function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
+/**
+ * this function displays the endscreen and stops every intervall. The endscreen changes with conditions
+ * 
+ * @param {*} id - shows wich endscreen condition is true
+ */
 function endGame(id){
   clearAllIntervals();
   document.getElementById('startScreen').style.display="flex";
@@ -60,13 +72,17 @@ function endGame(id){
   mariachi.pause();
  }
 
+ /**
+  * this function gives the canvas a ID and specifies the world from the class = world with the canvas and the keyboard as parameters
+  */
 function init(){
-   
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
-   
 }
 
+/**
+ * detect wich key is pressed and set the Key in the keyboard class true or false
+ */
 window.addEventListener ("keydown", (e) => {
  if(e.keyCode == 39){
    keyboard.RIGHT = true;
@@ -109,6 +125,9 @@ window.addEventListener ("keyup", (e) => {
   };
   })
 
+  /**
+   * this function detects wich button is pressed at the mobile Device and turns the Key at keyboard class true or falls
+   */
 function bindPresstoBtn(){
   document.getElementById("mobile_left").addEventListener("touchstart", (e) => {
     e.preventDefault();

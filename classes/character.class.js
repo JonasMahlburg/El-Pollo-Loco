@@ -49,17 +49,7 @@ IMAGES_STANDING = [
     'img_pollo_locco/img/2_character_pepe/1_idle/idle/I-7.png',
     'img_pollo_locco/img/2_character_pepe/1_idle/idle/I-8.png',
     'img_pollo_locco/img/2_character_pepe/1_idle/idle/I-9.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/idle/I-10.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-11.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-12.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-13.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-14.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-15.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-16.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-17.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-18.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-19.png',
-    'img_pollo_locco/img/2_character_pepe/1_idle/long_idle/I-20.png',
+    'img_pollo_locco/img/2_character_pepe/1_idle/idle/I-10.png'
 ];
 
 COINS = [];
@@ -80,7 +70,10 @@ isHurt_sound = new Audio('audio/hit.mp3');
 dead_sound = new Audio('audio/DIED_sound.mp3');
 
 
-
+/**
+ * The constructor for the class. It initializes the character by loading images, 
+ * applying gravity, and starting the animation loops.
+ */
 constructor(){
     super().loadImage('./img_pollo_locco/img/2_character_pepe/1_idle/idle/I-1.png');
     this.loadImages(this.IMAGES_STANDING);
@@ -94,7 +87,12 @@ constructor(){
 }
 
 
-
+/**
+ * Handles the animation and movement logic for the character.
+ * Two setInterval loops are used: one for updating the position and 
+ * handling the keyboard input, and another for handling the character's 
+ * animation based on its state (e.g., walking, jumping, hurt, dead).
+ */
 animate(){
 setInterval(()=> {
     this.walking_sound.pause();

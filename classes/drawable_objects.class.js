@@ -16,11 +16,20 @@ class drawableObject{
 
    //_--------------Loading---------------
 
+   /**
+    * loading single Image for standidols
+    * 
+    * @param {src} path source of the image
+    */
    loadImage(path){
     this.img = new Image();
     this.img.src = path;
         }
-    
+    /**
+     * loading multiple Images from Array for animation purpose
+     * 
+     * @param {array} arr name of the array with source
+     */
         loadImages (arr) {
             arr. forEach((path) => {
             let img = new Image();
@@ -29,6 +38,11 @@ class drawableObject{
             });
         }
     
+        /**
+         * draws the Images onto the Canvas
+         * 
+         * @param {ctx} ctx context for canvas proportions
+         */
         draw(ctx){
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }

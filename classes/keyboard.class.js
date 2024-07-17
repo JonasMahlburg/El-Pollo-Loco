@@ -1,4 +1,7 @@
-class Keyboard{
+/**
+ * The Keyboard class represents the state of various keyboard inputs.
+ */
+class Keyboard {
     LEFT = false;
     RIGHT = false;
     UP = false;

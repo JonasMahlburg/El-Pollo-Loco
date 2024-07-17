@@ -1,5 +1,11 @@
+/**
+ * class for Endboss
+ */
 class Endboss extends movableObject {
 
+    /**
+     * specifications for Endboss, how tall, wide he is, how much energy he has and at wich position he appears
+     */
     height = 500;
     width = 300;
     y = -55;
@@ -50,6 +56,9 @@ class Endboss extends movableObject {
 
 hadFirstContact = false;
 
+/**
+ * offset frame where the hitdetection of isColliding is working
+ */
 Offset = {
     bottom: 20, 
     top: 90,
@@ -59,7 +68,10 @@ Offset = {
 
 bagook = new Audio('audio/angryChicken.mp3');
    
-
+/**
+ * function thats triggered as soon as endboss is loaded 
+ * 
+ */
     constructor(){
         super().loadImage(this.IMAGES_ALERT[0]);
         this.loadImages(this.IMAGES_ALERT);
@@ -70,7 +82,9 @@ bagook = new Audio('audio/angryChicken.mp3');
         this.animate();
     }
      
-
+/**
+ * animates the movement of endboss in specific intervalls
+ */
     animate(){
         let i = 0;
 
