@@ -14,7 +14,6 @@ class World {
   throwableObjects = [];
   npc = new npc();
   bottleInSand = new bottleInSand();
-  start = new finish()
   intervals = [];
 
 
