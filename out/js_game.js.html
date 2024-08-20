@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: js/game.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: js/game.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let canvas;
+let world;
+let keyboard = new Keyboard();
+let firstPlayTrough = false;
+let mariachi = new Audio('audio/Titlemelody.mp3');
+
+/**
+ * this function shows the backstory of the game in a popUp over the canvas
+ */
+function showStory(){
+  document.getElementById('storyBoard').style.display="flex"
+  document.getElementById('storyBoard').innerHTML= `&lt;div class="storyBoardContainer">
+  &lt;span>Pepe &lt;br> please help the Mariachi musicians to get smooth fresh chickenbreasts for there Tacos&lt;/span>
+  &lt;button class="closeBtn" onclick="closeStory()">Story told&lt;/button>
+  &lt;/div>`
+}
+/**
+ * this function is used to close the Popup with the Backstory
+ */
+function closeStory(){
+  document.getElementById('storyBoard').style.display="none";
+}
+
+/**
+ * this function turns the Music on and off
+ */
+function toggleMusic(){
+ mariachi.volume= 0.2;
+ if(mariachi.paused) {
+  mariachi.play();
+ }else{
+  mariachi.pause();
+ };
+}
+/**
+ * this function starts all functions to display the game and remove the titlescreen
+ */
+function startGame(){
+  if(!firstPlayTrough){
+      document.getElementById('startScreen').style.display="none";
+  clearAllIntervals()
+  initLevel();
+  init();
+  
+  }
+firstPlayTrough = true;
+}
+
+/**
+ * this function stop all current intervals
+ */
+ function clearAllIntervals() {
+  for (let i = 1; i &lt; 9999; i++) window.clearInterval(i);
+}
+
+/**
+ * this function displays the endscreen and stops every intervall. The endscreen changes with conditions
+ * 
+ * @param {*} id - shows wich endscreen condition is true
+ */
+function endGame(id){
+  clearAllIntervals();
+  document.getElementById('startScreen').style.display="flex";
+  if (id == 1){
+    document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_1.png";
+  }else if (id == 2){
+    document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_2.png";
+  }else if (id == 3){
+    document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/game_over/oh no you lost!.png";
+  }
+  firstPlayTrough = false;
+  mariachi.pause();
+ }
+
+ /**
+  * this function gives the canvas a ID and specifies the world from the class = world with the canvas and the keyboard as parameters
+  */
+function init(){
+   canvas = document.getElementById('canvas');
+   world = new World(canvas, keyboard);
+}
+
+/**
+ * detect wich key is pressed and set the Key in the keyboard class true or false
+ */
+window.addEventListener ("keydown", (e) => {
+ if(e.keyCode == 39){
+   keyboard.RIGHT = true;
+ };
+ if(e.keyCode == 37){
+   keyboard.LEFT = true;
+ };
+ if(e.keyCode == 38){
+   keyboard.UP = true;
+ };
+ if(e.keyCode == 40){
+   keyboard.DOWN = true;
+ };
+ if(e.keyCode == 32){
+   keyboard.SPACE = true;
+ };
+ if(e.keyCode == 68){
+  keyboard.D = true;
+};
+})
+
+window.addEventListener ("keyup", (e) => {
+   if(e.keyCode == 39){
+     keyboard.RIGHT = false;
+   };
+   if(e.keyCode == 37){
+     keyboard.LEFT = false;
+   };
+   if(e.keyCode == 38){
+     keyboard.UP = false;
+   };
+   if(e.keyCode == 40){
+     keyboard.DOWN = false;
+   };
+   if(e.keyCode == 32){
+     keyboard.SPACE = false;
+   };
+   if(e.keyCode == 68){
+    keyboard.D = false;
+  };
+  })
+
+  /**
+   * this function detects wich button is pressed at the mobile Device and turns the Key at keyboard class true or falls
+   */
+function bindPresstoBtn(){
+  document.getElementById("mobile_left").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.LEFT = true;
+  });
+  document.getElementById("mobile_left").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.LEFT = false;
+  });
+
+  document.getElementById("mobile_right").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = true;
+  });
+  document.getElementById("mobile_right").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = false;
+  });
+
+  document.getElementById("mobile_jump").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.SPACE = true;
+  });
+  document.getElementById("mobile_jump").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.SPACE = false;
+  });
+
+  document.getElementById("mobile_throw").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    keyboard.D = true;
+  });
+  document.getElementById("mobile_throw").addEventListener("touchend", (e) => {
+    e.preventDefault();
+    keyboard.D = false;
+  });
+
+  document.getElementById("mobile_start").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    startGame()
+  });
+
+  document.getElementById("mobile_mute").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+   toggleMusic()
+  });
+}
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Background.html">Background</a></li><li><a href="Character.html">Character</a></li><li><a href="Chicken.html">Chicken</a></li><li><a href="Clouds.html">Clouds</a></li><li><a href="Endboss.html">Endboss</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Level.html">Level</a></li><li><a href="bossBar.html">bossBar</a></li><li><a href="bottleInSand.html">bottleInSand</a></li><li><a href="coinBar.html">coinBar</a></li><li><a href="coins.html">coins</a></li><li><a href="npc.html">npc</a></li><li><a href="salsaBar.html">salsaBar</a></li><li><a href="statusBar.html">statusBar</a></li><li><a href="throwableObject.html">throwableObject</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bindPresstoBtn">bindPresstoBtn</a></li><li><a href="global.html#clearAllIntervals">clearAllIntervals</a></li><li><a href="global.html#closeStory">closeStory</a></li><li><a href="global.html#endGame">endGame</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initLevel">initLevel</a></li><li><a href="global.html#showStory">showStory</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#toggleMusic">toggleMusic</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jul 18 2024 09:04:38 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

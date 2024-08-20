@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: levels/level1.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: levels/level1.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Initializes the game level with various objects and assigns it to the global variable `level1`.
+ */
+function initLevel() {
+    level1 = new Level(
+        // Array of enemy objects (in this case, Chicken objects)
+        [
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+        ],
+        // Array containing the endboss object (in this case, an Endboss object)
+        [
+            new Endboss()
+        ],
+        // Array of cloud objects
+        [
+            new Clouds(),
+            new Clouds(),
+            new Clouds(),
+            new Clouds(),
+        ],
+        // Array of coin objects
+        [
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+            new coins(),
+        ],
+        // Array of background objects
+        [
+            new Background('img_pollo_locco/img/5_background/layers/air.png', -719),
+            new Background('img_pollo_locco/img/5_background/layers/3_third_layer/2.png', -719),
+            new Background('img_pollo_locco/img/5_background/layers/2_second_layer/2.png', -719),
+            new Background('img_pollo_locco/img/5_background/layers/1_first_layer/2.png', -719),
+            new Background('img_pollo_locco/img/5_background/layers/air.png', 0),
+            new Background('img_pollo_locco/img/5_background/layers/3_third_layer/1.png', 0),
+            new Background('img_pollo_locco/img/5_background/layers/2_second_layer/1.png', 0),
+            new Background('img_pollo_locco/img/5_background/layers/1_first_layer/1.png', 0),
+            new Background('img_pollo_locco/img/5_background/layers/air.png', 719),
+            new Background('img_pollo_locco/img/5_background/layers/3_third_layer/2.png', 719),
+            new Background('img_pollo_locco/img/5_background/layers/2_second_layer/2.png', 719),
+            new Background('img_pollo_locco/img/5_background/layers/1_first_layer/2.png', 719),
+            new Background('img_pollo_locco/img/5_background/layers/air.png', 719*2),
+            new Background('img_pollo_locco/img/5_background/layers/3_third_layer/1.png', 719*2),
+            new Background('img_pollo_locco/img/5_background/layers/2_second_layer/1.png', 719*2),
+            new Background('img_pollo_locco/img/5_background/layers/1_first_layer/1.png', 719*2),
+            new Background('img_pollo_locco/img/5_background/layers/air.png', 719*3),
+            new Background('img_pollo_locco/img/5_background/layers/3_third_layer/2.png', 719*3),
+            new Background('img_pollo_locco/img/5_background/layers/2_second_layer/2.png', 719*3),
+            new Background('img_pollo_locco/img/5_background/layers/1_first_layer/2.png', 719*3),
+        ],
+        // Array of bottle in sand objects
+        [
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+            new bottleInSand(),
+        ]
+    );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Background.html">Background</a></li><li><a href="Character.html">Character</a></li><li><a href="Chicken.html">Chicken</a></li><li><a href="Clouds.html">Clouds</a></li><li><a href="Endboss.html">Endboss</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Level.html">Level</a></li><li><a href="bossBar.html">bossBar</a></li><li><a href="bottleInSand.html">bottleInSand</a></li><li><a href="coinBar.html">coinBar</a></li><li><a href="coins.html">coins</a></li><li><a href="npc.html">npc</a></li><li><a href="salsaBar.html">salsaBar</a></li><li><a href="statusBar.html">statusBar</a></li><li><a href="throwableObject.html">throwableObject</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bindPresstoBtn">bindPresstoBtn</a></li><li><a href="global.html#clearAllIntervals">clearAllIntervals</a></li><li><a href="global.html#closeStory">closeStory</a></li><li><a href="global.html#endGame">endGame</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initLevel">initLevel</a></li><li><a href="global.html#showStory">showStory</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#toggleMusic">toggleMusic</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jul 18 2024 09:04:38 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

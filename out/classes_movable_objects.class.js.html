@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: classes/movable_objects.class.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: classes/movable_objects.class.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class movableObject extends drawableObject{
+   
+    speed = 0.15;
+    otherDirection = false;
+    speedY = 0;
+    acceleration = 1;
+    energy = 100;
+    lastHit = 0;
+    Bottle = 0;
+    Coin = 0;
+    Offset = {
+        bottom: 0,
+        top: 0,
+        left: 0,
+        right: 0,
+    };
+
+    //---------Moving---------
+
+    /**
+     * moves object to the right
+     */
+    moveRight(){
+        this.x += this.speed;
+    }
+    /**
+     * moves object to the left
+     */
+    moveLeft(){
+            this.x -= this.speed;      
+    }
+
+    /**
+     * let the character jump
+     */
+    jump(){
+        this. speedY = 20;
+    }
+
+    /**
+     * goes trough the Array of Images and displays them one by one
+     * 
+     * @param {images} images - path of Image source
+     */
+    playAnimation(images){
+        let i = this.currentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
+
+    /**
+     * sets gravity 
+     */
+    applyGravity(){
+        setInterval(() => {
+            if (this.isAboveGround()|| this.speedY > 0){
+                   this.y -= this.speedY;
+                   this.speedY -= this.acceleration;
+            }
+        }, 1000/ 25);
+    }
+
+    /**
+     * 
+     * @returns - gives back that the Y Coordinate of the object is 150 -> character is the air
+     */
+    isAboveGround(){
+        if (this instanceof throwableObject){
+            return true
+        }else{
+            return this.y &lt;150;
+        }
+        
+    }
+
+
+    /**
+     * calculate if objects are colliding
+     * 
+     * @param {movableObject} mo - the object the character is colliding with 
+     * @returns - gives back the result
+     */
+    isColliding(mo) {
+return this.x + this.width - this.Offset.right > mo.x + mo.Offset.left &amp;&amp; 
+this.y + this.height - this.Offset.bottom > mo.y + mo.Offset.top &amp;&amp;
+ this.x + this.Offset.left &lt; mo.x + mo.width - mo.Offset.right &amp;&amp; 
+ this.y + this.Offset.top &lt; mo.y + mo.height - mo.Offset.bottom
+}
+
+/**
+ * energy of Object (character or enemy) depleets by 5. Timestamp at hit
+ */
+ hit(){
+    this.energy -= 5;
+    if (this.energy &lt; 0){
+        this.energy = 0;
+    }else{
+        this.lastHit = new Date().getTime();
+    }
+ }
+
+ /**
+  * in the time of 1 second the object cant get hurt
+  * 
+  * @returns -gives back the time that passed afetr hit when its under 1 second
+  */
+ isHurt(){
+    let timepassed = new Date().getTime() - this.lastHit; // Time passed in ms
+    timepassed = timepassed / 1000; // Time passed in s
+    return timepassed &lt; 1;
+
+ }
+
+ /**
+  * checks if the energy is 0
+  * 
+  * @returns - give back true if energy is 0
+  */
+ isDead(){
+    return this.energy ==0;
+
+ }
+
+ /**
+  * increase the number of bottles for salsa-Bar
+  */
+ collectBottle(){
+    this.Bottle += 10;
+    
+ }
+/**
+ * decrease the number of bottles for salsa-Bar
+ */
+ throwBottle(){
+    this.Bottle -= 10;
+ }
+/**
+ * increase the number of Coins for coin-Bar
+ */
+ collectCoin(){
+    this.Coin += 10;
+    
+ }
+
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Background.html">Background</a></li><li><a href="Character.html">Character</a></li><li><a href="Chicken.html">Chicken</a></li><li><a href="Clouds.html">Clouds</a></li><li><a href="Endboss.html">Endboss</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Level.html">Level</a></li><li><a href="bossBar.html">bossBar</a></li><li><a href="bottleInSand.html">bottleInSand</a></li><li><a href="coinBar.html">coinBar</a></li><li><a href="coins.html">coins</a></li><li><a href="npc.html">npc</a></li><li><a href="salsaBar.html">salsaBar</a></li><li><a href="statusBar.html">statusBar</a></li><li><a href="throwableObject.html">throwableObject</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bindPresstoBtn">bindPresstoBtn</a></li><li><a href="global.html#clearAllIntervals">clearAllIntervals</a></li><li><a href="global.html#closeStory">closeStory</a></li><li><a href="global.html#endGame">endGame</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initLevel">initLevel</a></li><li><a href="global.html#showStory">showStory</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#toggleMusic">toggleMusic</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Jul 18 2024 09:04:38 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
