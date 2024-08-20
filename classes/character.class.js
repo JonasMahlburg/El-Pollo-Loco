@@ -65,9 +65,9 @@ Offset = {
 
 world;
 isReallyDead= false;
-walking_sound = new Audio('audio/walking.mp3');
-isHurt_sound = new Audio('audio/hit.mp3');
-dead_sound = new Audio('audio/DIED_sound.mp3');
+walking_sound = audioElements[1] ;
+isHurt_sound = audioElements[3] ;
+dead_sound = audioElements[2] ;
 
 
 /**
@@ -85,6 +85,10 @@ constructor(){
     this.animate();
     
 }
+
+
+
+
 
 
 /**

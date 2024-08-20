@@ -2,7 +2,19 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let firstPlayTrough = false;
-let mariachi = new Audio('audio/Titlemelody.mp3');
+let audioElements = [
+  new Audio('audio/Titlemelody.mp3'),
+  new Audio('audio/walking.mp3'),
+  new Audio('audio/DIED_sound.mp3'),
+  new Audio('audio/hit.mp3'),
+  new Audio('audio/angryChicken.mp3')
+]
+let mariachi = audioElements[0];
+let  isMuted = false;
+
+audioElements.forEach(audio => {
+  audio.volume = 0.2;
+});
 
 /**
  * this function shows the backstory of the game in a popUp over the canvas
@@ -21,16 +33,30 @@ function closeStory(){
   document.getElementById('storyBoard').style.display="none";
 }
 
+
+
+function toggleMute() {
+  isMuted = !isMuted;
+  audioElements.forEach(audio => {
+      if (isMuted) {
+          audio.muted();
+      } else {
+          audio.pause();
+          mariachi.pause();
+      }
+  });
+}
+
 /**
  * this function turns the Music on and off
  */
 function toggleMusic(){
- mariachi.volume= 0.2;
- if(mariachi.paused) {
-  mariachi.play();
- }else{
-  mariachi.pause();
- };
+  let mariachi = audioElements[0]; // Beispiel: der erste Eintrag ist dein mariachi-Sound
+  if (mariachi.paused && !isMuted) {
+      mariachi.play();
+  } else {
+      mariachi.pause();
+  }
 }
 /**
  * this function starts all functions to display the game and remove the titlescreen

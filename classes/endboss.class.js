@@ -66,7 +66,7 @@ Offset = {
     right: 0,
 };
 
-bagook = new Audio('audio/angryChicken.mp3');
+bagook = audioElements[4];
    
 /**
  * function thats triggered as soon as endboss is loaded 
@@ -128,11 +128,21 @@ setInterval(() => {
 if(this.energy <= 80){
     this.playAnimation(this.IMAGES_ATTACK)
     this.speed = 15;
+    this.moveLeft();
 }
 },150);
 
+setInterval(() => {
+    if (this.energy--) {
+        this.playAnimation(this.IMAGES_HURT)
+        this.bagook.play();
+        this.bagook.pause();
+    }
+}, 1000/60);
 
 };
+
+
 
 
 }

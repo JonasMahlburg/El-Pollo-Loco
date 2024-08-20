@@ -49,14 +49,14 @@ padding-right: 5px;
 #portraitStart{
     position: absolute;
     display: none;
-    z-index: 300;
+    z-index: 101;
     background-color: black;
     justify-content: center;
     align-items: center;
 }
 img{
     width: 720px;
-    height: 54vh;
+    height: 480px;
 }
 
 .storyBoardContainer{
@@ -158,7 +158,7 @@ font-family: Cthulhumbus;
     width: 720px;
     height: 50vh;
     display: none;
-    z-index: 100;
+    z-index: 103;
     top: 124px;
     justify-content: space-between;
     align-items: center;
@@ -268,7 +268,9 @@ align-items: center;
 }
 
 @media only screen and (max-height: 480px) {
-  
+  body{
+    overflow-y: hidden;
+  }
     
     canvas {
         height: 100vh;
@@ -291,11 +293,15 @@ align-items: center;
     }
 
     .buttonsTop{
-        height: 100vh;
+     z-index: 1000;
+        top: 0;
+        position: fixed;
     }
 
     .buttonsBottom{
         height: 100vh;
+        bottom: 0;
+        position: fixed;
     }
 }
 
@@ -307,5 +313,8 @@ align-items: center;
 
     #portraitStart{
         display: block;
+    }
+    .mobileButtons{
+        display: none;
     }
 }
