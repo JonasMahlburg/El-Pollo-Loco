@@ -7,9 +7,10 @@ let audioElements = [
   new Audio('audio/walking.mp3'),
   new Audio('audio/DIED_sound.mp3'),
   new Audio('audio/hit.mp3'),
-  new Audio('audio/angryChicken.mp3')
+  new Audio('audio/angryChicken.mp3'),
+  new Audio('audio/winning_Sound.mp3')
 ]
-let mariachi = audioElements[0];
+let mariachi = audioElements[0]; 
 let  isMuted = false;
 
 audioElements.forEach(audio => {
@@ -39,19 +40,20 @@ function toggleMute() {
   isMuted = !isMuted;
   audioElements.forEach(audio => {
       if (isMuted) {
-          audio.muted();
+          audio.muted= true;
       } else {
+        audio.muted= false;
           audio.pause();
-          mariachi.pause();
       }
   });
+  toggleMusic();
 }
 
 /**
  * this function turns the Music on and off
  */
 function toggleMusic(){
-  let mariachi = audioElements[0]; // Beispiel: der erste Eintrag ist dein mariachi-Sound
+
   if (mariachi.paused && !isMuted) {
       mariachi.play();
   } else {
@@ -67,7 +69,7 @@ function startGame(){
   clearAllIntervals()
   initLevel();
   init();
-  
+  toggleMusic();
   }
 firstPlayTrough = true;
 }
@@ -198,7 +200,7 @@ function bindPresstoBtn(){
 
   document.getElementById("mobile_mute").addEventListener("touchstart", (e) => {
     e.preventDefault();
-   toggleMusic()
+   toggleMute()
   });
 }
 
