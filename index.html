@@ -1,85 +1,97 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="img_pollo_locco/img/10_own_images/favicon.png">
-    <link rel="stylesheet" href="style.css" />
-    <script src="./classes/world.class.js"></script>
-    <script src="./classes/drawable_objects.class.js"></script>
-    <script src="./classes/movable_objects.class.js"></script>
-    <script src="./classes/status-bar.class.js"></script>
-    <script src="./classes/salsa-bar.class.js"></script>
-    <script src="./classes/coin-bar.class.js"></script>
-    <script src="./classes/boss-bar.class.js"></script>
-    <script src="./classes/npc.class.js"></script>
-    <script src="./classes/character.class.js"></script>
-    <script src="./classes/chicken.class.js"></script>
-    <script src="./classes/clouds.class.js"></script>
-    <script src="./classes/coins.class.js"></script>
-    <script src="./classes/Bottle_in_sand.class.js"></script>
-    <script src="./classes/backgrounds.class.js"></script>
-    <script src="./classes/keyboard.class.js"></script>
-    <script src="./classes/level.class.js"></script>
-    <script src="./classes/endboss.class.js"></script>
-    <script src="./classes/throwable-object.class.js"></script>
-    <script src="./levels/level1.js"></script>
-    <script src="./js/game.js"></script>
-    <title>El Pollo Loco</title>
-  </head>
-  <body onload="bindPresstoBtn(), toggleMute()">
-    <h1>El Pollo Loco</h1>
-<div id="startScreen">
-  <img id="startScreenImage" src="img_pollo_locco/img/9_intro_outro_screens/start/startscreen_2.png" alt="StartScreen please click me">
-<img src="img_pollo_locco/img/10_own_images/turnYourDevice.jpeg" alt="" id="portraitStart">
-</div>
 
-<div id="storyBoard"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="img_pollo_locco/img/10_own_images/favicon.png">
+  <link rel="stylesheet" href="style.css" />
+  <script src="./classes/world.class.js"></script>
+  <script src="./classes/drawable_objects.class.js"></script>
+  <script src="./classes/movable_objects.class.js"></script>
+  <script src="./classes/status-bar.class.js"></script>
+  <script src="./classes/salsa-bar.class.js"></script>
+  <script src="./classes/coin-bar.class.js"></script>
+  <script src="./classes/boss-bar.class.js"></script>
+  <script src="./classes/npc.class.js"></script>
+  <script src="./classes/character.class.js"></script>
+  <script src="./classes/chicken.class.js"></script>
+  <script src="./classes/clouds.class.js"></script>
+  <script src="./classes/coins.class.js"></script>
+  <script src="./classes/Bottle_in_sand.class.js"></script>
+  <script src="./classes/backgrounds.class.js"></script>
+  <script src="./classes/keyboard.class.js"></script>
+  <script src="./classes/level.class.js"></script>
+  <script src="./classes/endboss.class.js"></script>
+  <script src="./classes/throwable-object.class.js"></script>
+  <script src="./levels/level1.js"></script>
+  <script src="./js/game.js"></script>
+  <title>El Pollo Loco</title>
+</head>
 
-<div class="mobileButtons">
-  <div class="buttonsTop">
-    <div class="mobileActionBtn" id="mobile_start"><img src="img_pollo_locco/img/10_own_images/mobile_start.png" alt="start" class="mobile_image"></div>
-    <div class="mobileActionBtn" id="mobile_mute"><img id="mobile_mute_img" src="img_pollo_locco/img/10_own_images/soundOff.png" alt="Sound" class="mobile_image"></div>
+<body onload="bindPresstoBtn(), toggleMute()">
+  <h1>El Pollo Loco</h1>
+  <div id="startScreen">
+    <img id="startScreenImage" src="img_pollo_locco/img/9_intro_outro_screens/start/startscreen_2.png"
+      alt="StartScreen please click me">
+    <img src="img_pollo_locco/img/10_own_images/turnYourDevice.jpeg" alt="" id="portraitStart">
   </div>
-  <div class="buttonsBottom">
-    <div class="buttonsDirection">
-      <div class="mobileActionBtn" id="mobile_left"><img class="mobile_image" src="img_pollo_locco/img/10_own_images/mobile_left.png" alt="links"></div>
-      <div class="mobileActionBtn" id="mobile_right"><img class="mobile_image" src="img_pollo_locco/img/10_own_images/mobile_right.png" alt="rechts"></div>
+
+  <div id="storyBoard"></div>
+
+  <div class="mobileButtons">
+    <div class="buttonsTop">
+      <div class="mobileActionBtn" id="mobile_start"><img src="img_pollo_locco/img/10_own_images/mobile_start.png"
+          alt="start" class="mobile_image"></div>
+      <div class="mobileActionBtn" id="mobile_mute"><img id="mobile_mute_img"
+          src="img_pollo_locco/img/10_own_images/soundOff.png" alt="Sound" class="mobile_image"></div>
     </div>
-    <div class="buttonsAction">
-      <div class="mobileActionBtn" id="mobile_jump"><img class="mobile_image" src="img_pollo_locco/img/10_own_images/mobile_jump.png" alt="springen"></div>
-      <div class="mobileActionBtn" id="mobile_throw"><img class="mobile_image" src="img_pollo_locco/img/10_own_images/mobile_throw.png" alt="werfen"></div>
+    <div class="buttonsBottom">
+      <div class="buttonsDirection">
+        <div class="mobileActionBtn" id="mobile_left"><img class="mobile_image"
+            src="img_pollo_locco/img/10_own_images/mobile_left.png" alt="links"></div>
+        <div class="mobileActionBtn" id="mobile_right"><img class="mobile_image"
+            src="img_pollo_locco/img/10_own_images/mobile_right.png" alt="rechts"></div>
+      </div>
+      <div class="buttonsAction">
+        <div class="mobileActionBtn" id="mobile_jump"><img class="mobile_image"
+            src="img_pollo_locco/img/10_own_images/mobile_jump.png" alt="springen"></div>
+        <div class="mobileActionBtn" id="mobile_throw"><img class="mobile_image"
+            src="img_pollo_locco/img/10_own_images/mobile_throw.png" alt="werfen"></div>
+      </div>
     </div>
   </div>
-</div> 
 
 
-    <canvas id="canvas" width="720" height="480"> </canvas>
-    <div class="menu">
+  <canvas id="canvas" width="720" height="480"> </canvas>
+  <div class="menu">
     <div class="control">
       <div>
-        
+
         <span> <- : Left</span>
       </div>
       <div>
-       
+
         <span> -> : Right</span>
       </div>
       <div>
-      
+
         <span> Space : Jump</span>
       </div>
       <div>
-        
+
         <span> D : throw bottle</span>
       </div>
     </div>
-<div class="buttons">
-  <button class="start" onclick="startGame()">Start Game!</button>
-  <button class="isAbout"  onclick="showStory()">Story</button>
- <button onclick="toggleMute()" class="music" id="musicButton" ></button>
-</div>
+    <div class="buttons">
+      <button class="start" onclick="startGame()">Start Game!</button>
+      <button class="isAbout" onclick="showStory()">Story</button>
+      <button onclick="toggleMute()" class="music" id="musicButton"></button>
+    </div>
 
   </div>
-  </body>
+
+  <a href="./Imprint.html">Imprint</a>
+</body>
+
 </html>

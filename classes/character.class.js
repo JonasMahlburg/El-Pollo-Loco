@@ -92,51 +92,69 @@ constructor(){
  * handling the keyboard input, and another for handling the character's 
  * animation based on its state (e.g., walking, jumping, hurt, dead).
  */
-animate(){
-setInterval(()=> {
-    this.walking_sound.pause();
-    if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
-       this.moveRight();
-       this.otherDirection = false;
-       this.walking_sound.play();
-    }
-    if (this.world.keyboard.LEFT && this.x > 0){
-       this.moveLeft();
-       this.otherDirection = true;
-        this.walking_sound.play();
-   }
+animate() {
+    this.animateLeftRight();
+    this.animateState();
+}
 
-   if(this.world.keyboard.SPACE && !this.isAboveGround()) {
-    this.jump();
+/**
+ * Handles the left and right movement animations of the character.
+ */
+animateLeftRight() {
+    setInterval(() => {
+        this.walking_sound.pause();
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+            this.otherDirection = false;
+            this.walking_sound.play();
+        }
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+            this.otherDirection = true;
+            this.walking_sound.play();
+        }
+        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            this.jump();
+        }
 
-    }
-  
-   this.world.camera_x = -this.x + 100;
-   
-}, 1000/60)
+        this.world.camera_x = -this.x + 100;
+    }, 1000 / 60);
+}
 
-setInterval(()=> {
-     if (this.isDead() && !this.isReallyDead){
-        this.isReallyDead= true;
-        this.playAnimation(this.IMAGES_DEAD)
-        this.dead_sound.play();
-        setTimeout(endGame(3), 1500);
-    }else{ if (this.isHurt()){
-        this.playAnimation(this.IMAGES_HURT)
-        this.isHurt_sound.play();
-    }else{
-         if (this.isAboveGround()){
-        this.playAnimation(this.IMAGES_JUMPING)
-    }else{ if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-        //walking Animation
-   this.playAnimation(this.IMAGES_WALKING)
-    }else {
-        this.playAnimation(this.IMAGES_STANDING)
-    }
-    }      
-    }  
-    }    
-}, 50);
-};
+/**
+ * Handles the animation state of the character based on its current status (e.g., dead, hurt, jumping, walking, standing).
+ */
+animateState() {
+    setInterval(() => {
+        if (this.isDead() && !this.isReallyDead) {
+            this.handleDeath();
+        } else if (this.isHurt()) {
+            this.handleHurt();
+        } else if (this.isAboveGround()) {
+            this.playAnimation(this.IMAGES_JUMPING);
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            this.playAnimation(this.IMAGES_WALKING);
+        } else {
+            this.playAnimation(this.IMAGES_STANDING);
+        }
+    }, 50);
+}
 
+/**
+ * Handles the death animation and triggers the end of the game.
+ */
+handleDeath() {
+    this.isReallyDead = true;
+    this.playAnimation(this.IMAGES_DEAD);
+    this.dead_sound.play();
+    setTimeout(() => endGame(3), 1500);
+}
+
+/**
+ * Handles the hurt animation and sound.
+ */
+handleHurt() {
+    this.playAnimation(this.IMAGES_HURT);
+    this.isHurt_sound.play();
+}
 }

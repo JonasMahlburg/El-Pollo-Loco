@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('img_pollo_locco/img/10_own_images/desert-6814275_1280.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    margin: 0;
+}
+
+.imprint{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 5px, dashed black;
+    background-color: #D5AF95;
+    font-size: 18px;
+    padding: 10px;
+    font-family: Cthulhumbus;
+}
+
+.back{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.back:hover{
+    color: yellow
+}

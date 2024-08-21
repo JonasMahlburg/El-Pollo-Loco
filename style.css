@@ -1,9 +1,9 @@
 @font-face {
     font-family: Cthulhumbus;
     src: url(fonts/JMH\ Cthulhumbus\ UG.ttf);
-  }
+}
 
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,7 +15,7 @@ body{
     margin: 0;
 }
 
-canvas{
+canvas {
     background-color: black;
     border: 4px solid black;
     display: block;
@@ -24,19 +24,19 @@ canvas{
     top: 22px
 }
 
-.control{
-background-color: #C98345;
-border: 2px solid black;
-margin-top: 30px;
-padding-left: 5px;
-padding-right: 5px;
+.control {
+    background-color: #C98345;
+    border: 2px solid black;
+    margin-top: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-#startScreen{
+#startScreen {
     position: absolute;
     display: flex;
     z-index: 100;
@@ -46,20 +46,22 @@ padding-right: 5px;
     align-items: center;
 }
 
-#portraitStart{
+#portraitStart {
     position: absolute;
     display: none;
     z-index: 101;
     background-color: black;
     justify-content: center;
     align-items: center;
+    object-fit: contain;
 }
-img{
+
+img {
     width: 720px;
     height: 480px;
 }
 
-.storyBoardContainer{
+.storyBoardContainer {
     background-color: #C98345;
     display: flex;
     justify-content: center;
@@ -70,7 +72,7 @@ img{
     flex-direction: column;
 }
 
-#storyBoard{
+#storyBoard {
     background-color: #C98345;
     position: relative;
     width: 720px;
@@ -83,45 +85,46 @@ img{
     align-items: center;
 }
 
-.closeBtn{
+.closeBtn {
     background-color: gold;
-border: 1px solid black;
-border-radius: 50%;
-height: 60px;
-width: 60px;
-cursor: pointer;
-font-family: Cthulhumbus;
-margin-top: 60px;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    font-family: Cthulhumbus;
+    margin-top: 60px;
 }
 
-.closeBtn:hover{
+.closeBtn:hover {
     border: 2px solid rgb(0, 0, 0);
     transform: scale(1.2);
 }
 
-.menu{
+.menu {
     display: flex;
     flex-direction: column;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding-top: 10px;
     gap: 10px;
 }
-.start{
-background-color: green;
-border: 1px solid black;
-border-radius: 50%;
-height: 60px;
-width: 60px;
-cursor: pointer;
-font-family: Cthulhumbus;
+
+.start {
+    background-color: green;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    font-family: Cthulhumbus;
 }
 
-.start:hover{
+.start:hover {
     border: 2px solid gold;
     transform: scale(1.2);
 }
@@ -140,27 +143,27 @@ font-family: Cthulhumbus;
     cursor: pointer;
 }
 
-.music:hover{
+.music:hover {
     border: 2px solid gold;
     transform: scale(1.2);
 }
 
-.isAbout{
-background-color: gold;
-border: 1px solid black;
-border-radius: 50%;
-height: 60px;
-width: 60px;
-cursor: pointer;
-font-family: Cthulhumbus;
+.isAbout {
+    background-color: gold;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    font-family: Cthulhumbus;
 }
 
-.isAbout:hover{
+.isAbout:hover {
     border: 2px solid rgb(0, 0, 0);
     transform: scale(1.2);
 }
 
-.mobileButtons{
+.mobileButtons {
     position: absolute;
     width: 720px;
     height: 50vh;
@@ -172,89 +175,98 @@ font-family: Cthulhumbus;
     flex-direction: column;
 }
 
-.mobileActionBtn{
+.mobileActionBtn {
     background-color: gold;
-border: 1px solid black;
-border-radius: 50%;
-height: 50px;
-width: 50px;
-font-family: Cthulhumbus;
-display: flex;
-justify-content: center;
-align-items: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-family: Cthulhumbus;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.buttonsBottom{
+.buttonsBottom {
     display: flex;
     justify-content: space-between;
     width: 720px;
 }
 
-.buttonsTop{
+.buttonsTop {
     display: flex;
     justify-content: space-between;
     width: 720px;
 }
 
-.buttonsDirection{
+.buttonsDirection {
     display: flex;
     justify-content: end;
     align-items: end;
     margin: 10px;
 }
 
-.buttonsAction{
+.buttonsAction {
     display: flex;
     justify-content: end;
     align-items: end;
 }
 
 
-.mobile_image{
+.mobile_image {
     width: 40px;
     height: 40px;
     object-fit: contain;
 }
 
-#mobile_throw{
+#mobile_throw {
     margin-left: 10px;
 }
 
-#mobile_right{
+#mobile_right {
     margin-left: 10px;
 }
 
-/* mobile versions */
+a{
+    text-decoration: none;
+    color: red;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+a:hover{
+    color:yellow;
+}
 
 @media only screen and (max-width: 720px) {
-    body{
-        background-image:none;
+    body {
+        background-image: none;
         height: 100%;
     }
 
-    h1{
+    h1 {
         display: none;
     }
 
-    .control{
+    .control {
         display: none;
     }
 
-    .menu{
+    .menu {
         display: none;
     }
-    
+
     canvas {
         width: 100%;
         top: 0;
     }
 
-    img{
+    img {
         width: 100%;
         top: 0;
     }
 
-    #startScreen{
+    #startScreen {
         width: 100%;
         top: 0;
     }
@@ -265,63 +277,64 @@ align-items: center;
         top: 0;
     }
 
-    .buttonsTop{
+    .buttonsTop {
         width: 100%;
     }
 
-    .buttonsBottom{
+    .buttonsBottom {
         width: 100%;
     }
 }
 
 @media only screen and (max-height: 480px) {
-  body{
-    overflow-y: hidden;
-  }
-    
+    body {
+        overflow-y: hidden;
+    }
+
     canvas {
         height: 100vh;
         position: absolute;
-    
+
     }
 
-    img{
+    img {
         height: 100vh;
     }
 
-    #startScreen{
+    #startScreen {
         height: 100vh;
         top: 0;
     }
 
-    .mobileButtons{
+    .mobileButtons {
         display: flex;
         height: 100vh;
     }
 
-    .buttonsTop{
-     z-index: 1000;
+    .buttonsTop {
+        z-index: 1000;
         top: 0;
         position: fixed;
     }
 
-    .buttonsBottom{
+    .buttonsBottom {
         height: 100vh;
         bottom: 0;
         position: fixed;
     }
 }
 
-@media screen and (orientation:portrait){
+@media screen and (orientation:portrait) {
 
-    #startscreenImage{
+    #startscreenImage {
         display: none;
     }
 
-    #portraitStart{
+    #portraitStart {
         display: block;
     }
-    .mobileButtons{
+
+    .mobileButtons {
         display: none;
     }
 }
