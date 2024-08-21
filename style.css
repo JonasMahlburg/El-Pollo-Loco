@@ -109,6 +109,7 @@ margin-top: 60px;
     justify-content: space-around;
     align-items: center;
     padding-top: 10px;
+    gap: 10px;
 }
 .start{
 background-color: green;
@@ -125,18 +126,24 @@ font-family: Cthulhumbus;
     transform: scale(1.2);
 }
 
-.music{
-border: 1px solid black;
-border-radius: 50%;
-height: 60px;
-width: 60px;
-cursor: pointer;
-font-family: Cthulhumbus;
-object-fit: contain;
-background-color: blue;
+.music {
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    background-image: url('img_pollo_locco/img/10_own_images/soundOn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-color: blue;
+    cursor: pointer;
 }
 
-
+.music:hover{
+    border: 2px solid gold;
+    transform: scale(1.2);
+}
 
 .isAbout{
 background-color: gold;

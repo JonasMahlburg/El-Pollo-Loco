@@ -46,21 +46,4 @@ class drawableObject{
         draw(ctx){
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         }
-
-        // drawOffsetFrame(ctx){         
-        //     if (this instanceof Character || this instanceof Endboss || this instanceof throwableObject){
-        //         ctx.beginPath();
-        //         ctx.lineWidth ='2';                                          
-        //         ctx.strokeStyle = 'red';
-        //         // Berechnung der neuen Position und Größe unter Berücksichtigung des Offsets
-        //         let offsetX = this.x + this.Offset.left;
-        //         let offsetY = this.y + this.Offset.top;
-        //         let offsetWidth = this.width - (this.Offset.left + this.Offset.right);
-        //         let offsetHeight = this.height - (this.Offset.top + this.Offset.bottom);
-        //         ctx.rect(offsetX, offsetY, offsetWidth, offsetHeight);
-        //         ctx.stroke();
-        //     }
-        // }
-
-
 }

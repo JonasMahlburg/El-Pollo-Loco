@@ -63,52 +63,123 @@ class World {
 /**
  * checks if the character is colliding with sertain objects or enemies
  */
-  checkCollisions() {
-    this.level.enemies.forEach((enemy, index) => {
+checkCollisions() {
+  this.checkEnemyCollisions();
+  this.checkBossCollisions();
+  this.checkCoinCollisions();
+  this.checkBottleCollisions();
+  this.checkThrowableCollisions();
+}
+
+/**
+* Checks for collisions between the character and enemies, handling the collision logic.
+*/
+checkEnemyCollisions() {
+  this.level.enemies.forEach((enemy, index) => {
       if (this.character.isColliding(enemy)) {
-        if(!this.character.isAboveGround()){
-        this.character.hit();
-        this.statusBar.setPercentage(this.character.energy);
-        }else if(this.character.isAboveGround()){
-          enemy.loadImage('img_pollo_locco/img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
-          this.level.enemies.splice(index, 1);
-        }
-
+          if (!this.character.isAboveGround()) {
+              this.handleCharacterHit();
+          } else if (this.character.isAboveGround() && this.character.speedY < 0) {
+              this.handleEnemyDefeat(enemy, index);
+          }
       }
-    });
-    //Hit detection for Ultra Chicken
-    this.level.endboss.forEach((boss) => {
-        if(this.character.isColliding(boss)){
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-        }
-    });
-// Münzen sammeln
-    this.level.coins.forEach((coin, index) => {
-        if (this.character.isColliding(coin)) {
-          this.character.collectCoin();
-          level1.coins.splice(index, 1);
-          this.coinBar.setPercentage(this.character.Coin);
-        }
-      });
-    
-      this.level.bottleInSand.forEach((salsa, index) => {
-        if (this.character.isColliding(salsa)) {
-          this.character.collectBottle();
-          level1.bottleInSand.splice(index, 1);  // delete bottle from screen
-        this.salsaBar.setPercentage(this.character.Bottle);
-        this.character.AMMONITION.push('salsa')
-        }
-      });
+  });
+}
 
-      this.throwableObjects.forEach((bottle) => {
-        if(bottle.isColliding(this.level.endboss[0])){
-          this.level.endboss[0].hit();
-          this.bossBar.setPercentage(  this.level.endboss[0].energy);
-          
-        }
-      });
-  }
+/**
+* Handles collisions with the boss.
+*/
+checkBossCollisions() {
+  this.level.endboss.forEach((boss) => {
+      if (this.character.isColliding(boss)) {
+          this.handleCharacterHit();
+      }
+  });
+}
+
+/**
+* Checks for collisions between the character and coins, handling the coin collection.
+*/
+checkCoinCollisions() {
+  this.level.coins.forEach((coin, index) => {
+      if (this.character.isColliding(coin)) {
+          this.handleCoinCollection(index);
+      }
+  });
+}
+
+/**
+* Checks for collisions between the character and bottles in the sand, handling the bottle collection.
+*/
+checkBottleCollisions() {
+  this.level.bottleInSand.forEach((salsa, index) => {
+      if (this.character.isColliding(salsa)) {
+          this.handleBottleCollection(index);
+      }
+  });
+}
+
+/**
+* Checks for collisions between throwable objects (bottles) and the boss.
+*/
+checkThrowableCollisions() {
+  this.throwableObjects.forEach((bottle) => {
+      if (bottle.isColliding(this.level.endboss[0])) {
+          this.handleBossHit();
+      }
+  });
+}
+
+/**
+* Handles the character being hit by an enemy or the boss.
+*/
+handleCharacterHit() {
+  this.character.hit();
+  this.statusBar.setPercentage(this.character.energy);
+}
+
+/**
+* Handles the defeat of an enemy by the character.
+* 
+* @param {Object} enemy - The enemy object to be defeated.
+* @param {number} index - The index of the enemy in the array.
+*/
+handleEnemyDefeat(enemy, index) {
+  enemy.loadImage('img_pollo_locco/img/3_enemies_chicken/chicken_normal/2_dead/dead.png');
+  this.level.enemies.splice(index, 1);
+}
+
+/**
+* Handles the collection of a coin by the character.
+* 
+* @param {number} index - The index of the coin in the array.
+*/
+handleCoinCollection(index) {
+  this.character.collectCoin();
+  this.level.coins.splice(index, 1);
+  this.coinBar.setPercentage(this.character.Coin);
+}
+
+/**
+* Handles the collection of a bottle in the sand by the character.
+* 
+* @param {number} index - The index of the bottle in the array.
+*/
+handleBottleCollection(index) {
+  this.character.collectBottle();
+  this.level.bottleInSand.splice(index, 1);  // delete bottle from screen
+  this.salsaBar.setPercentage(this.character.Bottle);
+  this.character.AMMONITION.push('salsa');
+}
+
+/**
+* Handles the boss being hit by a throwable object (bottle).
+*/
+handleBossHit() {
+  this.level.endboss[0].hit();
+  this.bossBar.setPercentage(this.level.endboss[0].energy);
+}
+
 
   /**
    * draws every Object onto the canvas

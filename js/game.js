@@ -11,14 +11,14 @@ let audioElements = [
   new Audio('audio/winning_Sound.mp3')
 ]
 let mariachi = audioElements[0]; 
-let  isMuted = false;
+let isMuted = false;
 
 audioElements.forEach(audio => {
   audio.volume = 0.2;
 });
 
 /**
- * this function shows the backstory of the game in a popUp over the canvas
+ * Displays the backstory of the game in a popup over the canvas.
  */
 function showStory(){
   document.getElementById('storyBoard').style.display="flex"
@@ -27,89 +27,98 @@ function showStory(){
   <button class="closeBtn" onclick="closeStory()">Story told</button>
   </div>`
 }
+
 /**
- * this function is used to close the Popup with the Backstory
+ * Closes the popup displaying the game's backstory.
  */
 function closeStory(){
   document.getElementById('storyBoard').style.display="none";
 }
 
-
-
+/**
+ * Toggles the mute state for all audio elements and adjusts the music accordingly.
+ */
 function toggleMute() {
   isMuted = !isMuted;
   audioElements.forEach(audio => {
-      if (isMuted) {
-          audio.muted= true;
-      } else {
-        audio.muted= false;
+      audio.muted = isMuted;
+      if (!isMuted) {
           audio.pause();
       }
   });
   toggleMusic();
+  if(!isMuted){
+    document.getElementById('musicButton').style.backgroundImage = "url('img_pollo_locco/img/10_own_images/soundOn.png')";
+    document.getElementById('mobile_mute_img').src = 'img_pollo_locco/img/10_own_images/soundOn.png';
+  }else{
+document.getElementById('musicButton').style.backgroundImage = "url('img_pollo_locco/img/10_own_images/soundOff.png')";
+document.getElementById('mobile_mute_img').src = 'img_pollo_locco/img/10_own_images/soundOff.png';
+  }
+  
 }
 
 /**
- * this function turns the Music on and off
+ * Toggles the background music on or off based on its current state and the mute status.
  */
 function toggleMusic(){
-
   if (mariachi.paused && !isMuted) {
       mariachi.play();
   } else {
       mariachi.pause();
   }
 }
+
 /**
- * this function starts all functions to display the game and remove the titlescreen
+ * Starts the game by initializing the level and world, and removing the titlescreen. 
+ * Plays the background music if it is the first playthrough.
  */
 function startGame(){
   if(!firstPlayTrough){
       document.getElementById('startScreen').style.display="none";
-  clearAllIntervals()
-  initLevel();
-  init();
-  toggleMusic();
+      clearAllIntervals();
+      initLevel();
+      init();
+      toggleMusic();
   }
-firstPlayTrough = true;
+  firstPlayTrough = true;
 }
 
 /**
- * this function stop all current intervals
+ * Stops all currently running intervals in the game.
  */
- function clearAllIntervals() {
+function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 /**
- * this function displays the endscreen and stops every intervall. The endscreen changes with conditions
+ * Ends the game, displays the appropriate end screen based on the game result, and stops all intervals.
  * 
- * @param {*} id - shows wich endscreen condition is true
+ * @param {number} id - Indicates the condition to determine which end screen to display.
  */
 function endGame(id){
   clearAllIntervals();
   document.getElementById('startScreen').style.display="flex";
   if (id == 1){
     document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_1.png";
-  }else if (id == 2){
+  } else if (id == 2){
     document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/win/won_2.png";
-  }else if (id == 3){
+  } else if (id == 3){
     document.getElementById('startScreenImage').src= "img_pollo_locco/img/9_intro_outro_screens/game_over/oh no you lost!.png";
   }
   firstPlayTrough = false;
   mariachi.pause();
- }
+}
 
- /**
-  * this function gives the canvas a ID and specifies the world from the class = world with the canvas and the keyboard as parameters
-  */
+/**
+ * Initializes the game by setting up the canvas and world with the keyboard controls.
+ */
 function init(){
    canvas = document.getElementById('canvas');
    world = new World(canvas, keyboard);
 }
 
 /**
- * detect wich key is pressed and set the Key in the keyboard class true or false
+ * Detects which key is pressed and updates the corresponding property in the `keyboard` object.
  */
 window.addEventListener ("keydown", (e) => {
  if(e.keyCode == 39){
@@ -132,6 +141,9 @@ window.addEventListener ("keydown", (e) => {
 };
 })
 
+/**
+ * Detects which key is released and updates the corresponding property in the `keyboard` object.
+ */
 window.addEventListener ("keyup", (e) => {
    if(e.keyCode == 39){
      keyboard.RIGHT = false;
@@ -146,16 +158,18 @@ window.addEventListener ("keyup", (e) => {
      keyboard.DOWN = false;
    };
    if(e.keyCode == 32){
+    e.preventDefault();
      keyboard.SPACE = false;
    };
    if(e.keyCode == 68){
     keyboard.D = false;
   };
-  })
+})
 
-  /**
-   * this function detects wich button is pressed at the mobile Device and turns the Key at keyboard class true or falls
-   */
+/**
+ * Binds touch events on mobile controls to the corresponding properties in the `keyboard` object.
+ * This function ensures mobile devices can control the game similarly to keyboard inputs.
+ */
 function bindPresstoBtn(){
   document.getElementById("mobile_left").addEventListener("touchstart", (e) => {
     e.preventDefault();
@@ -195,14 +209,15 @@ function bindPresstoBtn(){
 
   document.getElementById("mobile_start").addEventListener("touchstart", (e) => {
     e.preventDefault();
-    startGame()
+    startGame();
   });
 
   document.getElementById("mobile_mute").addEventListener("touchstart", (e) => {
     e.preventDefault();
-   toggleMute()
+    toggleMute();
   });
 }
+
 
 
 

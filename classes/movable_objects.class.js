@@ -74,7 +74,6 @@ class movableObject extends drawableObject{
         
     }
 
-
     /**
      * calculate if objects are colliding
      * 

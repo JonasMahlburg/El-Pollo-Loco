@@ -39,7 +39,7 @@
 <div class="mobileButtons">
   <div class="buttonsTop">
     <div class="mobileActionBtn" id="mobile_start"><img src="img_pollo_locco/img/10_own_images/mobile_start.png" alt="start" class="mobile_image"></div>
-    <div class="mobileActionBtn" id="mobile_mute"><img src="img_pollo_locco/img/10_own_images/soundOn.png" alt="Sound" class="mobile_image"></div>
+    <div class="mobileActionBtn" id="mobile_mute"><img id="mobile_mute_img" src="img_pollo_locco/img/10_own_images/soundOff.png" alt="Sound" class="mobile_image"></div>
   </div>
   <div class="buttonsBottom">
     <div class="buttonsDirection">
@@ -77,7 +77,7 @@
 <div class="buttons">
   <button class="start" onclick="startGame()">Start Game!</button>
   <button class="isAbout"  onclick="showStory()">Story</button>
- <img onclick="toggleMute()" class="music" src="img_pollo_locco/img/10_own_images/soundOn.png" alt="Music On/Off">
+ <button onclick="toggleMute()" class="music" id="musicButton" ></button>
 </div>
 
   </div>

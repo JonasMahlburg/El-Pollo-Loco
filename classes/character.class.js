@@ -86,11 +86,6 @@ constructor(){
     
 }
 
-
-
-
-
-
 /**
  * Handles the animation and movement logic for the character.
  * Two setInterval loops are used: one for updating the position and 
@@ -121,9 +116,6 @@ setInterval(()=> {
 }, 1000/60)
 
 setInterval(()=> {
-
-    
-        
      if (this.isDead() && !this.isReallyDead){
         this.isReallyDead= true;
         this.playAnimation(this.IMAGES_DEAD)
@@ -142,11 +134,8 @@ setInterval(()=> {
         this.playAnimation(this.IMAGES_STANDING)
     }
     }      
-    }
-        
-    }
-
-    
+    }  
+    }    
 }, 50);
 };
 

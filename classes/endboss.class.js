@@ -137,18 +137,5 @@ if(this.energy <= 80){
     this.moveLeft();
 }
 },150);
-
-// setInterval(() => {
-//     if (this.energy--) {
-//         this.playAnimation(this.IMAGES_HURT)
-//         this.bagook.play();
-//         this.bagook.pause();
-//     }
-// }, 1000/60);
-
 };
-
-
-
-
 }
